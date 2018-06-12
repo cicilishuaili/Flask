@@ -38,7 +38,7 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/graph',methods=['POST'])
+@app.route('/graph')
 def graph():
     name = app.vars['name']
     plotcols = app.vars['features']
