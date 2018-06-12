@@ -67,6 +67,11 @@
           <form id="input" method="post" action="index">
           <p>Ticker symbol: <input type="text" name="ticker" placeholder="GOOG"></p>
           <p>
+          Start date:
+          <input type="date" name="dates" min="1980-01-01" value="2017-01-01"><br>
+          End date:
+          <input type="date" name="dates" max="2018-03-27" value="2018-03-27"><br>
+          <p>
           <input type="checkbox" name="features" value="close">Closing price<br>
           <input type="checkbox" name="features" value="adj_close">Adjusted closing price<br>
           <input type="checkbox" name="features" value="open">Opening price<br>
