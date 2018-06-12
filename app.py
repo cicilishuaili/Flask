@@ -49,10 +49,10 @@ def graph():
     payload = {'api_key':api_key, 'ticker':name,
                'date.gte':dates[0], 'date.lte':dates[1],
                'qopts.columns':'date,'+','.join(plotcols)}
-#    f = open('%s_graph.txt'%(app.vars['name']),'w')
-#    for k,v in payload.items():
-#        f.write('%s:%s\n'%(k,v))
-#    f.close()
+    f = open('%s_graph.txt'%(app.vars['name']),'w')
+    for k,v in payload.items():
+        f.write('%s:%s\n'%(k,v))
+    f.close()
     r = requests.get('https://www.quandl.com/api/v3/datatables/WIKI/PRICES', 
                      params = payload)
     
@@ -85,10 +85,9 @@ def graph():
     script, div = components(p)
     
     resources = INLINE.render()
-    html = render_template('embed.html', plot_script=script, plot_div=div,
+    return render_template('embed.html', plot_script=script, plot_div=div,
                            resources=resources, name=name, 
                            glink='https://www.google.com/finance?q='+name)
-    return encode_utf8(html)
     
 
 #    html=file_html(p, CDN, "plot")

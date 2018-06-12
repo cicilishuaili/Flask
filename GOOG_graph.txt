@@ -1,0 +1,5 @@
+api_key:xd5os9YDzLCDTcVcsubf
+ticker:GOOG
+date.gte:2017-01-01
+date.lte:2018-03-27
+qopts.columns:date,close
