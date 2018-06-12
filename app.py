@@ -90,9 +90,10 @@ def graph():
     colors=brewer['Dark2'][4]
     for i in range(n):
         p.circle(data_df.date, data_df[plotcols[i]], 
-               legend = name+" : "+plotcols[i],color=colors[i], size=2)
+               legend = name+" : "+plotcols[i],color=colors[i], 
+               size=2, alpha=0.5)
         p.line(data_df.date, data_df[plotcols[i]], 
-               legend = name+" : "+plotcols[i],color=colors[i])
+               legend = name+" : "+plotcols[i],color=colors[i],alpha=0.5)
     
     p.legend.location = "top_left"
     
