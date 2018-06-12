@@ -3,8 +3,7 @@ import pandas as pd
 import requests
 import json
 from bokeh.plotting import figure
-from bokeh.resources import CDN
-from bokeh.embed import file_html
+#from bokeh.models import HoverTool
 from bokeh.palettes import brewer
 import os
 from bokeh.embed import components
@@ -39,7 +38,7 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/graph')
+@app.route('/graph',methods=['POST'])
 def graph():
     name = app.vars['name']
     plotcols = app.vars['features']
@@ -69,15 +68,29 @@ def graph():
     data_df.columns = colnames
     data_df.date = pd.to_datetime(data_df.date)
     
+#    hover = HoverTool(
+#        tooltips=[
+#            ('Value', '$y'),
+#            ('Date', '$x{%F}')],
+#        formatters={
+#            '$x'      : 'datetime',
+#        },
+#        mode='vline'
+#)
+    
     p = figure(x_axis_type="datetime", 
                title=name+" QUANDL WIKI Stock Prices from "+dates[0]+" to "+dates[1])
+    
+#    p.add_tools(hover)
 
     p.grid.grid_line_alpha=0.3
     p.xaxis.axis_label = 'Date'
-    p.yaxis.axis_label = 'Price'
+    p.yaxis.axis_label = 'Price ($)'
     
     colors=brewer['Dark2'][4]
     for i in range(n):
+        p.circle(data_df.date, data_df[plotcols[i]], 
+               legend = name+" : "+plotcols[i],color=colors[i], size=2)
         p.line(data_df.date, data_df[plotcols[i]], 
                legend = name+" : "+plotcols[i],color=colors[i])
     
