@@ -7,6 +7,8 @@ name = "pypi"
 gunicorn = "*"
 requests = "*"
 Flask = "*"
+pandas = "*"
+bokeh = "*"
 
 [dev-packages]
 
