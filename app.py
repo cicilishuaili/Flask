@@ -49,15 +49,15 @@ def graph():
     payload = {'api_key':api_key, 'ticker':name,
                'date.gte':dates[0], 'date.lte':dates[1],
                'qopts.columns':'date,'+','.join(plotcols)}
-    f = open('%s_graph.txt'%(app.vars['name']),'w')
-    for k,v in payload.items():
-        f.write('%s:%s\n'%(k,v))
-    f.close()
+#    f = open('%s_graph.txt'%(app.vars['name']),'w')
+#    for k,v in payload.items():
+#        f.write('%s:%s\n'%(k,v))
+#    f.close()
     r = requests.get('https://www.quandl.com/api/v3/datatables/WIKI/PRICES', 
                      params = payload)
     
     if r.status_code != 200:
-        return "Something's wrong with your request. Please check ticker entry and try again."
+        return "Something's wrong with thes request. Please check ticker entry and try again."
     
     jdata = r.json()
     jtable = jdata.get("datatable")
@@ -78,20 +78,21 @@ def graph():
     
     colors=brewer['Dark2'][4]
     for i in range(n):
-        p.line(data_df.date, data_df[plotcols[i]], legend = name+" : "+plotcols[i],color=colors[i])
+        p.line(data_df.date, data_df[plotcols[i]], 
+               legend = name+" : "+plotcols[i],color=colors[i])
     
     p.legend.location = "top_left"
     
     script, div = components(p)
     
     resources = INLINE.render()
-    return render_template('embed.html', plot_script=script, plot_div=div,
+    html = render_template('embed.html', plot_script=script, plot_div=div,
                            resources=resources, name=name, 
                            glink='https://www.google.com/finance?q='+name)
     
 
-#    html=file_html(p, CDN, "plot")
-#    return html
+    html=file_html(p, CDN, "plot")
+    return html
 
 if __name__ == '__main__':
     app.run(port=33507)
