@@ -90,7 +90,7 @@ def graph():
                            resources=resources, name=name, 
                            glink='https://www.google.com/finance?q='+name)
 
-    return html
+    return encode_utf8(html)
 
 if __name__ == '__main__':
     app.run(port=33507)
