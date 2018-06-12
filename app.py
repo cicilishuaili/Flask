@@ -89,9 +89,7 @@ def graph():
     html = render_template('embed.html', plot_script=script, plot_div=div,
                            resources=resources, name=name, 
                            glink='https://www.google.com/finance?q='+name)
-    
 
-    html=file_html(p, CDN, "plot")
     return html
 
 if __name__ == '__main__':
