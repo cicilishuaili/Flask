@@ -1,6 +1,6 @@
 # Flask on Heroku
 
-This project help tie together some important concepts and
+This project help ties together some important concepts and
 technologies, including Git, Flask, JSON, Pandas,
 Requests, Heroku, and Bokeh for visualization.
 
