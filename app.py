@@ -81,8 +81,7 @@ def index():
         
         resources = INLINE.render()
         html = render_template('embed.html', plot_script=script, plot_div=div,
-                               resources=resources, name=name, 
-                               glink='https://www.google.com/finance?q='+name)
+                               resources=resources, name=name)
     
         return encode_utf8(html)
 
