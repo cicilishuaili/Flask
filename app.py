@@ -16,10 +16,14 @@ app = Flask(__name__)
 def home():
     return redirect('/index')
 
-@app.route('/index',methods=['GET','POST'])
+@app.route('/index')
 def index():
+    return render_template('index.html')
+    
+@app.route('/graph',methods=['GET','POST'])
+def graph():    
     if request.method == 'GET':
-        return render_template('index.html')
+        return redirect('/index')
     else:
         name = request.form['ticker']
         features = request.form.getlist('features')
