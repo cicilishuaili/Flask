@@ -11,7 +11,8 @@ The [finished example](https://sli-flask-demo.herokuapp.com/) that demonstrates 
 
 **problems encountered/ lessons learned**
 
-* _Figuring out Flask._ Took a few scattered tries to pick up. Been wanting to play a bit with HTML that was more than changing colors, hopefully all good from here.
+* _Figuring out Flask._ Took a few scattered tries to pick up. Been wanting to play a bit with HTML that was more than changing colors.
+* _Think carefully about global vars._ Was pointed out about the dangers. Think about multiple user requests.
 * _Figuring out json format._ Pretty good once structure becomes clear.
 * _Storing API key as a config variable._ Always good to know.
 * _Running Heroku locally._ Using Pipenv to create a virtualenv and install dependencies.
